@@ -1,4 +1,6 @@
-const testingConfig = {
+import { TypeOrmModuleOptions } from "@nestjs/typeorm";
+
+export const testingConfig = {
     port: 4000, // Example port number for testing environment
     database: {
         host: 'localhost', // Example database host for testing environment
@@ -10,4 +12,13 @@ const testingConfig = {
     // Add any other configuration options specific to your testing environment
 };
 
-export default testingConfig;
+export const testingDatabaseConfig: TypeOrmModuleOptions = {
+    type: 'mysql',
+    host: 'localhost',
+    port: 3306,
+    username: 'MShahab',
+    password: 'shahab@12',
+    database: 'prod_database',
+    entities: [],
+    synchronize: true,
+};

@@ -1,6 +1,7 @@
-import developmentConfig from "./dev-configuration";
-import productionConfig from "./prod-configuration";
-import testingConfig from "./testing-configuration";
+import { TypeOrmModuleOptions } from "@nestjs/typeorm";
+import { devDatabaseConfig, developmentConfig } from "./dev-configuration";
+import { prodDatabaseConfig, productionConfig } from "./prod-configuration";
+import { testingConfig, testingDatabaseConfig } from "./testing-configuration";
 
 
 export default () => {
@@ -11,5 +12,16 @@ export default () => {
             return testingConfig;
         default:
             return developmentConfig;
+    }
+};
+
+export const getTypeOrmConfig = (env: string): TypeOrmModuleOptions => {
+    switch (env) {
+        case 'production':
+            return prodDatabaseConfig
+        case 'testing':
+            return testingDatabaseConfig
+        default:
+             return devDatabaseConfig;
     }
 };

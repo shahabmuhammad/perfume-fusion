@@ -1,4 +1,6 @@
-const developmentConfig = {
+import { TypeOrmModuleOptions } from "@nestjs/typeorm";
+
+export const developmentConfig = {
     port: 8080, // Example port number for development environment
     database: {
         host: 'localhost', // Example database host for development environment
@@ -10,4 +12,13 @@ const developmentConfig = {
     // Add any other configuration options specific to your development environment
 };
 
-export default developmentConfig;
+export const devDatabaseConfig: TypeOrmModuleOptions = {
+    type: 'mysql',
+    host: 'localhost',
+    port: 3306,
+    username: 'MShahab',
+    password: 'shahab@12',
+    database: 'perfume_fusion',
+    entities: [],
+    synchronize: true,
+}

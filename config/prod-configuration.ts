@@ -1,4 +1,6 @@
-const productionConfig = {
+import { TypeOrmModuleOptions } from "@nestjs/typeorm";
+
+export const productionConfig = {
     port: 5000, // Example port number for production environment
     database: {
         host: 'localhost', // Example database host for production environment
@@ -10,4 +12,13 @@ const productionConfig = {
     // Add any other configuration options specific to your production environment
 };
 
-export default productionConfig;
+export const prodDatabaseConfig: TypeOrmModuleOptions = {
+    type: 'mysql',
+    host: 'localhost',
+    port: 3306,
+    username: 'MShahab',
+    password: 'shahab@12',
+    database: 'prod_database',
+    entities: [],
+    synchronize: true,
+};
